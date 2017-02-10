@@ -48,7 +48,8 @@ public class ListViewActivity extends Activity {
     };
 
     private ListView mListView;
-    private ArrayAdapter mArrayAdapter;
+    private PlaceAdapter mPlaceAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,16 +58,16 @@ public class ListViewActivity extends Activity {
 
         mListView = (ListView) findViewById(R.id.myListView);
 
-        mArrayAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,myStringArray);
+        mPlaceAdapter = new PlaceAdapter(getApplicationContext(),R.layout.row,myPlacesArray);
 
         if(mListView!=null){
-            mListView.setAdapter(mArrayAdapter);
+            mListView.setAdapter(mPlaceAdapter);
         }
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.v("Place",myStringArray[position]);
+                Log.v("PLACE",myPlacesArray[position].mNameOfPlace);
             }
         });
 
